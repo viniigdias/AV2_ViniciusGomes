@@ -1,0 +1,69 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+
+public class Q8_ViniciusGomes extends JFrame implements ActionListener {
+
+    private JButton[] botoes;
+    private Random gerador;
+    private int numeroEscolhido;
+    private JTextField campoTentativa;
+    private int tentativaAtual;
+
+    public Q8_ViniciusGomes() {
+        super("Jogo de Adivinhação");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new GridLayout(5, 5));
+
+        botoes = new JButton[20];
+        for (int i = 0; i < 20; i++) {
+            botoes[i] = new JButton(Integer.toString(i+1));
+            botoes[i].addActionListener(this);
+            add(botoes[i]);
+        }
+
+        gerador = new Random();
+        numeroEscolhido = gerador.nextInt(20) + 1;
+
+        campoTentativa = new JTextField();
+        campoTentativa.setEditable(false);
+        add(campoTentativa);
+
+        tentativaAtual = 1;
+        atualizarCampoTentativa();
+
+        pack();
+        setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        JButton botaoClicado = (JButton) e.getSource();
+        int numeroEscolhidoPeloUsuario = Integer.parseInt(botaoClicado.getText());
+
+        System.out.println("Você escolheu o número " + numeroEscolhidoPeloUsuario);
+        System.out.println("O número escolhido pelo programa é " + numeroEscolhido);
+
+        if (numeroEscolhidoPeloUsuario == numeroEscolhido) {
+            JOptionPane.showMessageDialog(this, "Parabéns, você acertou!");
+            dispose();
+        } else if (tentativaAtual == 5) {
+            JOptionPane.showMessageDialog(this, "Que pena, suas tentativas acabaram. O número era " + numeroEscolhido + ".");
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Que pena, tente novamente!");
+            tentativaAtual++;
+            atualizarCampoTentativa();
+        }
+    }
+
+    private void atualizarCampoTentativa() {
+        campoTentativa.setText("Tentativa " + tentativaAtual + " de 5");
+    }
+
+    public static void main(String[] args) {
+        new Q8_ViniciusGomes();
+    }
+}
