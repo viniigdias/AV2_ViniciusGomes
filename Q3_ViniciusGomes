@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+public class Q3_ViniciusGomes {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Digite a quantidade de números: ");
+        int quantidade = s.nextInt();
+        int soma = 0;
+        for (int i = 1; i <= quantidade; i++) {
+            System.out.print("Digite o número " + i + ": ");
+            int numero = s.nextInt();
+            soma += numero;
+        }
+        System.out.println("A soma de todos os números é: " + soma);
+    }
+}
