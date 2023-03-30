@@ -1,0 +1,23 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.StringTokenizer;
+
+public class Q4_ViniciusGomes {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite uma frase qualquer: ");
+        String input = scanner.nextLine();
+
+        StringTokenizer tokenizer = new StringTokenizer(input);
+        ArrayList<String> tokens = new ArrayList<String>();
+
+        while (tokenizer.hasMoreTokens()) {
+            String token = tokenizer.nextToken();
+            if (token.toLowerCase().startsWith("s")) {
+                tokens.add(token);
+            }
+        }
+
+        System.out.println("Tokens que começam com a letra 's': " + tokens);
+    }
+}
