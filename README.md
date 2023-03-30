@@ -1,2 +1,2 @@
 # AV2_ViniciusGomes
-POO
+Programação Orientada de Objetos
