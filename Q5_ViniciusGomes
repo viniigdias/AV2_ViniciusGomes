@@ -1,0 +1,41 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.StringTokenizer;
+
+public class Q5_ViniciusGomes {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite o nome do arquivo de texto: ");
+        String fileName = scanner.nextLine();
+
+        ArrayList<String> links = new ArrayList<String>();
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(fileName));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                StringTokenizer tokenizer = new StringTokenizer(line);
+                while (tokenizer.hasMoreTokens()) {
+                    String token = tokenizer.nextToken();
+                    if (token.toLowerCase().contains("link")) {
+                        links.add(token);
+                    }
+                }
+            }
+            reader.close();
+        } catch (IOException e) {
+            System.out.println("Erro ao ler o arquivo: " + e.getMessage());
+            return;
+        }
+
+        System.out.println("Palavras com a subsequência 'link': " + links);
+
+    }
+
+}
+
