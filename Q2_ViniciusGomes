@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class Q2_ViniciusGomes {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Digite o número de entradas");
+        int num = s.nextInt();
+        int soma = 0;
+
+
+        for (int i = 0; i < num; i++){
+            System.out.println("Digite um valor");
+            soma += s.nextInt();
+
+        }
+        System.out.println("A soma das entradas "+ num +" é: "+soma);
+    }
+}
